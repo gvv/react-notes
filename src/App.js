@@ -6,6 +6,7 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 // Notes Components
 import NotesForm from './NotesForm'
+import NotesList from './NotesList'
 
 
 class App extends React.Component {
@@ -19,11 +20,25 @@ class App extends React.Component {
   }
 
   updateValue = e => {
-    console.log(e.target.value);
     this.setState({
       [e.target.name]: e.target.value
       
     })
+  };
+
+  saveNote = () => {
+    console.log(this.state)
+    if (this.state.title !== '' && this.state.description !== '' ) {
+    this.setState({
+      title: '',
+      description: '',
+      notes: [...this.state.notes, {
+        id: Date.now(),
+        title: this.state.title,
+        description: this.state.description
+      }]
+    });
+  }
   };
 
   render (){
@@ -31,19 +46,19 @@ class App extends React.Component {
     return (
       <Fragment>
         <Typography align='center' variant='h2' gutterBottom>
-          Hola Mundo!
+          Hola React-Notes!
         </Typography>
   
         <Grid container justify='center' spacing={2}>
           <Grid item xs={4}>
-            {/* NotesList */}
+            <NotesList notes={this.state.notes} />
           </Grid>
           <Grid item xs={8}>
             <NotesForm title={this.state.title} description={this.state.description} updateValue={this.updateValue}/>
           </Grid>
         </Grid>
   
-        <Fab color='primary' className='addIcon'>
+        <Fab color='primary' className='addIcon' onClick={this.saveNote}>
           <AddIcon />
         </Fab>
       </Fragment>

@@ -12,7 +12,7 @@ const NotesForm = (props) => {
                 <TextField name='title' type='text' label='Titulo' margin='normal' fullWidth onChange={props.updateValue} value={props.title}/>
             </Grid>
             <Grid item xs={12}>
-                <TextField name='description' multiline rows='4' margin='normal' fullWidth placeholder='Anote' onChange={props.updateValue} value={props.description}/>
+                <TextField name='description' multiline rows='4' margin='normal' fullWidth placeholder='Notas:' onChange={props.updateValue} value={props.description}/>
             </Grid>
 
             <Fab color='secondary' className='editIcon'>
