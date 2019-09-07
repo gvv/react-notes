@@ -1,32 +1,34 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 //Material-UI
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
-import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
-import moment from 'moment'
+import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 const NotesList = ({notes}) => {
     return notes.length ?
     (
         <List>
            {
-            notes.map((note) => {
-                return(
-                    <ListItem button key={note.id} > 
-                        <ListItemText primary={note.title} secondary={moment(note.id).format('MMM do YY')}/>
-                        <ListItemSecondaryAction>
-                            <IconButton>
-                                <DeleteIcon/>
-                            </IconButton>
-                        </ListItemSecondaryAction>
-                    </ListItem>
-                )
-            })
+            notes.map((note) => (
+                
+                   
+                        <ListItem button key={note.id} component={Link} to={`/view/${note.id}`} > 
+                            <ListItemText primary={note.title} secondary={moment(note.id).format('MMM do YY, h:mm:ss a')}/>
+                            <ListItemSecondaryAction>
+                                <IconButton>
+                                    <DeleteIcon/>
+                                </IconButton>
+                            </ListItemSecondaryAction>
+                        </ListItem>
+                   
+                
+            ))
             }
         </List>
     ) : (
