@@ -8,6 +8,7 @@ import AddIcon from '@material-ui/icons/Add';
 import NotesForm from './NotesForm';
 import NotesList from './NotesList';
 import Home from './Home';
+import Note from './Note';
 // React Router
 import { Link, Route } from 'react-router-dom';
 
@@ -65,15 +66,16 @@ class App extends React.Component {
               updateValue={this.updateValue} 
               saveNote={this.saveNote}/>
             */}
-            
-            {/*
-            <Route exact path='/add' component={NotesForm}/>
-            */}
-            <Route exact path='/add' render={(props) => <NotesForm 
+
+           
+            <Route path='/add' render={(props) => <NotesForm 
               title={this.state.title} 
               description={this.state.description} 
               updateValue={this.updateValue} 
               saveNote={this.saveNote}/>} />
+
+            <Route path='/view/:id' render={props => <Note {...props} notes={this.state.notes} />} />
+
           </Grid>
         </Grid>
   
