@@ -8,6 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import moment from 'moment'
 
 const NotesList = ({notes}) => {
     return notes.length ?
@@ -17,7 +18,7 @@ const NotesList = ({notes}) => {
             notes.map((note) => {
                 return(
                     <ListItem button key={note.id} > 
-                        <ListItemText primary={note.title}/>
+                        <ListItemText primary={note.title} secondary={moment(note.id).format('MMM do YY')}/>
                         <ListItemSecondaryAction>
                             <IconButton>
                                 <DeleteIcon/>

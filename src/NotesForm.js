@@ -15,7 +15,7 @@ const NotesForm = (props) => {
                 <TextField name='description' multiline rows='4' margin='normal' fullWidth placeholder='Notas:' onChange={props.updateValue} value={props.description}/>
             </Grid>
 
-            <Fab color='secondary' className='editIcon'>
+            <Fab color='secondary' className='editIcon' onClick={props.saveNote}>
                 <Icon>edit_icon</Icon>
             </Fab>
         </Fragment>

@@ -54,11 +54,11 @@ class App extends React.Component {
             <NotesList notes={this.state.notes} />
           </Grid>
           <Grid item xs={8}>
-            <NotesForm title={this.state.title} description={this.state.description} updateValue={this.updateValue}/>
+            <NotesForm title={this.state.title} description={this.state.description} updateValue={this.updateValue} saveNote={this.saveNote}/>
           </Grid>
         </Grid>
   
-        <Fab color='primary' className='addIcon' onClick={this.saveNote}>
+        <Fab color='primary' className='addIcon'>
           <AddIcon />
         </Fab>
       </Fragment>
